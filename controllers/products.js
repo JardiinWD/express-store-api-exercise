@@ -1,3 +1,6 @@
+// ====== MODELS ======== //
+const Product = require('../models/product')
+
 // ====== CONTROLLERS ======== //
 
 /** Controller function for handling a static route to test products
@@ -17,11 +20,14 @@ const getAllProductsStatic = async (req, res) => {
  * @param {Object} res - Express response object. Used to send a response to the client.
  */
 const getAllProducts = async (req, res) => {
-    // Respond with a 200 status and a JSON message for the product route
+    // Get All Tasks from MongoDB Collection
+    const products = await Product.find({})
+    // Retrieves all tasks from the MongoDB collection
     res.status(200).json({
         status: 'success',
-        message: 'Product route'
-    });
+        amount: products.length,
+        products
+    })
 }
 
 // ====== EXPORT ======== //

@@ -4,7 +4,8 @@
   "description": "This repository contains the tutorial conducted during section 7 of John Smilga's course on NodeJS and Express ",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "populate": "node populate.js"
   },
   "keywords": [
     "Node JS",
