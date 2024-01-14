@@ -1,7 +1,7 @@
 {
   "name": "express-store-api-exercise",
   "version": "1.0.0",
-  "description": "",
+  "description": "This repository contains the tutorial conducted during section 7 of John Smilga's course on NodeJS and Express ",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js"

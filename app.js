@@ -1,22 +1,34 @@
 // ====== PACKAGES ======== //
-// EXPRESS
-const express = require('express')
-// DOTENV
-const dotenv = require('dotenv');
+const express = require('express') // EXPRESS
+const dotenv = require('dotenv'); // DOTENV
 dotenv.config({ path: './config.env' })
 // Creating an Express application
 const app = express();
-// MORGAN 
-const morgan = require('morgan');
+const morgan = require('morgan'); // MORGAN 
 app.use(morgan('dev'))
+// ASYNC ERRORS
+require('express-async-errors')
 // CONNECT DB HANDLER
 const connectDB = require(`${__dirname}/db/connect`);
+// ROUTERS
+const productsRouter = require('./routes/products')
+
 
 // ====== MIDDLEWARES ======== //
-app.use(express.json())
-app.use(express.static('./public'))
+const notFoundMiddleware = require(`${__dirname}/middleware/not-found`)
+const errorHandlerMiddleware = require(`${__dirname}/middleware/error-handler`)
 
-// ====== ROUTES ======== //
+// ====== PRODUCTS ROUTES ======== //
+// '/' -> route
+app.get('/', (req, res) => {
+    res.send('<h1>Store API</h1><a href="/api/v1/products">Products Route</a>')
+})
+// '/api/v1/products' -> route
+app.use('/api/v1/products', productsRouter)
+
+// ====== ERROR ROUTES ======== //
+app.use(notFoundMiddleware)
+app.use(errorHandlerMiddleware)
 
 
 // ====== MONGODB ======== //

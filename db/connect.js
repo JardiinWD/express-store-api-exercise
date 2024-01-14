@@ -1,9 +1,9 @@
-// Requiring the 'mongoose' library for MongoDB interactions
-const mongoose = require('mongoose');
-// Importing the dotenv package for environment variable configuration
-const dotenv = require('dotenv');
-// Configuring dotenv and specifying the path for the environment variables file
+// ====== PACKAGES ======== //
+const mongoose = require('mongoose'); // MONGOOSE
+const dotenv = require('dotenv'); // DOTENV
 dotenv.config({ path: '../config.env' })
+
+// ====== MONGODB ======== //
 
 /** Function to establish a connection to the MongoDB database
  * @param {string} url - MongoDB connection string.
@@ -21,6 +21,6 @@ const connectDB = (url) => {
   })
 }
 
-// Exporting the 'connectDB' function to make it available for use in other parts of the application
+// ====== EXPORTS ======== //
 module.exports = connectDB;
 
